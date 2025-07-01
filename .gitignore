@@ -1,27 +1,8 @@
-# Environnements virtuels
-.venv/
-env/
-venv/
-
-# Fichiers Python
-__pycache__/
-*.py[cod]
-*.pyo
-
-# Jupyter et IPython
-.ipynb_checkpoints
-
-# Logs
-*.log
-logs/
-
-# Fichiers système
-.DS_Store
-Thumbs.db
-
-# Variables d’environnement
+﻿.vault/
 .env
-
-# Fichiers d’IDE
-.vscode/
-.idea/
+secrets/
+__pycache__/
+*.pyc
+venv/
+tmp/
+*.log

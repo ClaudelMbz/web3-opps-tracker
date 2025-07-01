@@ -10,3 +10,4 @@ Un système automatisé de détection, filtrage et notification d’opportunité
 - `.env` : Variables d'environnement (non versionnées)
 - `requirements.txt` : Dépendances Python
 - `README.md` : Documentation du projet
+
