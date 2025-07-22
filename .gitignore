@@ -41,6 +41,16 @@ ENV/
 env.bak/
 venv.bak/
 
+# === ENVIRONNEMENTS VIRTUELS ABSOLUS ===
+# Exclure TOUT environnement virtuel peu importe le nom
+**/venv/
+**/.venv/
+**/env/
+**/.env/
+**/ENV/
+**/virtualenv/
+**/site-packages/
+
 # === DONNÉES & CACHE ===
 data/
 logs/
