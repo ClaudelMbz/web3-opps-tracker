@@ -1,8 +1,95 @@
-﻿.vault/
+# === SÉCURITÉ & SECRETS ===
+.vault/
+vault/
 .env
 secrets/
+credentials.json
+*.key
+*.pem
+*.session
+telegram_user_session.session
+
+# === PYTHON ===
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# === ENVIRONNEMENTS VIRTUELS ===
 venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# === DONNÉES & CACHE ===
+data/
+logs/
 tmp/
 *.log
+*.csv
+*.json.bak
+galxe_cache/
+scraped_data/
+monitoring/
+
+# === DÉVELOPPEMENT ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === MONITORING & STATS ===
+*_stats.json
+*_state.json
+usage_export_*.json
+monitoring_stats.json
+scraper_stats.json
+telegram_monitor_state.json
+
+# === FICHIERS SPÉCIFIQUES ===
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.docx
+*.xml
+*.html
+scraperapi_output.html
+binance_feed_from_python.xml
+debug_screenshot.png
+screenshot.png
+
+# === BINANCE VERSIONS ===
+Binance_old/
+copyV2/
+
+# === FICHIERS TEMPORAIRES OFFICE ===
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# === FICHIERS SYSTÈME ===
+python
