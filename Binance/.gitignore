@@ -1,8 +1,0 @@
-﻿.vault/
-.env
-secrets/
-__pycache__/
-*.pyc
-venv/
-tmp/
-*.log

@@ -1,6 +1,10 @@
 from datetime import datetime
 import random
+from dotenv import load_dotenv
 from vault_manager import VaultManager
+
+# Charger les variables d'environnement
+load_dotenv()
 
 class ScraperAPIBalancer:
     def __init__(self):

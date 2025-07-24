@@ -7,6 +7,12 @@ class VaultManager:
             token = os.getenv("VAULT_TOKEN")
         if not token:
             raise ValueError("Token Vault non fourni. Définissez la variable d'environnement VAULT_TOKEN.")
+        
+        # Le token Vault en mode dev nécessite les guillemets
+        if not token.startswith('"') and not token.startswith("'"):
+            # Si le token ne commence pas par des guillemets, on les ajoute
+            token = f'"{token}"'
+        
         self.client = hvac.Client(url=url, token=token)
         if not self.client.is_authenticated():
             raise Exception("Erreur d'authentification avec Vault")

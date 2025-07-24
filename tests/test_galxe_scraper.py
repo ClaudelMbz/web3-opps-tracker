@@ -1,14 +1,20 @@
-# tests/test_galxe_scraper_fixed.py
+# tests/test_galxe_scraper.py
 import sys
 import os
 import time
 import json
+import pytest
 from datetime import datetime
 
 # Ajouter le répertoire parent au path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from scrapers.galxe_scraper import GalxeScraperEnhanced
+
+@pytest.fixture
+def scraper():
+    """Fixture pour créer une instance du scraper Galxe"""
+    return GalxeScraperEnhanced()
 
 def test_scraper_initialization():
     """Test l'initialisation du scraper"""
@@ -194,50 +200,3 @@ def test_content_validation(scraper):
         print(f"❌ Erreur validation: {e}")
         return False
 
-def run_comprehensive_test():
-    """Exécuter tous les tests"""
-    print("🚀 Tests complets du Scraper Galxe Optimisé")
-    print("=" * 55)
-    
-    # Test 1: Initialisation
-    scraper = test_scraper_initialization()
-    if not scraper:
-        print("❌ Échec critique - arrêt des tests")
-        return
-    
-    # Test 2: Scraping simple
-    html = test_single_page_scrape(scraper)
-    if not html:
-        print("⚠️  Scraping simple échoué")
-    
-    # Test 3: Extraction des campagnes
-    results = test_campaign_extraction(scraper)
-    if not results:
-        print("⚠️  Extraction des campagnes échouée")
-    
-    # Test 4: Fallback
-    test_fallback_mechanism(scraper)
-    
-    # Test 5: Stats
-    test_stats_and_persistence(scraper)
-    
-    # Test 6: Validation
-    test_content_validation(scraper)
-    
-    # Résumé final
-    print("\n" + "=" * 55)
-    print("📊 Résumé final des tests")
-    final_stats = scraper.get_stats()
-    print(f"🔄 Méthode active: {final_stats['optimal_method']}")
-    print(f"📈 Total requêtes: {final_stats['daily_requests']}")
-    print(f"🎭 Playwright: {'✅' if final_stats['playwright_available'] else '❌'}")
-    print(f"⚡ Fallback: {'✅' if final_stats['fallback_active'] else '❌'}")
-    print(f"📊 Quota restant: {final_stats['remaining_quota']}")
-    
-    if final_stats['daily_requests'] > 0 or final_stats['fallback_active']:
-        print("🎉 Tests terminés avec succès!")
-    else:
-        print("⚠️  Tests partiels - vérifier la configuration")
-
-if __name__ == "__main__":
-    run_comprehensive_test()
