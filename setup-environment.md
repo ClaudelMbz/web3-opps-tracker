@@ -52,13 +52,13 @@ vault secrets enable -version=2 kv
 ### 7. Injection des secrets dans Vault
 ```powershell
 # Secrets Zealy
-vault kv put kv/zealy api_key="votre_clé_zealy_ici"
+vault kv put kv/zealy api_key="403f46ENmJCfLdjSXD0cm5SPVy3"
 
 # Secrets Galxe
-vault kv put kv/galxe api_key="votre_clé_galxe_ici"
+vault kv put kv/galxe api_key="Bq2y6Ma0ytM3ibm6TmFqpA8bi8847v4L"
 
 # Secrets ScraperAPI pour Galxe
-vault kv put kv/scraperapi api_key="votre_clé_scraperapi_ici"
+vault kv put kv/scraperapi/account1 api_key="9fe1262a47c62fc12031b5523c96e527"
 ```
 
 ### 8. Test de fonctionnement des scrapers

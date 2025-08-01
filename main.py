@@ -29,7 +29,7 @@ def run_pipeline():
     try:
         print("\n--- Source: Galxe ---")
         galxe_scraper = GalxeScraperEnhanced()
-        galxe_quests = galxe_scraper.scrape_galxe_campaigns(pages=5)
+        galxe_quests = galxe_scraper.scrape_galxe_campaigns(pages=1)
         if galxe_quests:
             all_opportunities.extend(galxe_quests)
             print(f"✅ Galxe: {len(galxe_quests)} opportunités récupérées.")

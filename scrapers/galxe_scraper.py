@@ -104,8 +104,8 @@ class GalxeScraperEnhanced:
             "api_key": account_key,
             "url": url,
             "render": "true",
-            "wait_for": "div.campaign-item", # Sélecteur corrigé
-            "timeout": 60000, # Timeout augmenté à 60s
+            "wait_for": "div.GridFlowContainer_grid-flow__m_iqK > *", # Wait for grid items to load
+            "timeout": 90000, # Timeout augmenté à 90s
             "country_code": "us"
         }
         
@@ -114,7 +114,7 @@ class GalxeScraperEnhanced:
         response = self.session.get(
             "http://api.scraperapi.com", 
             params=params,
-            timeout=65  # Timeout HTTP augmenté
+            timeout=120  # Timeout HTTP augmenté pour le contenu dynamique
         )
         
         if response.status_code == 200:
@@ -138,9 +138,15 @@ class GalxeScraperEnhanced:
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 
                 try:
-                    page.wait_for_selector("div.campaign-item", timeout=30000) # Sélecteur corrigé
+                    # Wait for the main grid container
+                    page.wait_for_selector("div.GridFlowContainer_grid-flow__m_iqK", timeout=30000)
+                    # Wait a bit more for content to load
+                    page.wait_for_timeout(5000)
+                    # Try to wait for actual quest cards to appear
+                    page.wait_for_selector("div.GridFlowContainer_grid-flow__m_iqK > *", timeout=30000)
                 except Exception as e:
-                    print(f"⚠️  Sélecteur 'div.campaign-item' non trouvé, continuons... Erreur: {e}")
+                    print(f"⚠️  Grid container or quest items not found, trying anyway... Erreur: {e}")
+                    # Even if we can't find items, continue - sometimes they load after timeout
                 
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 time.sleep(3)
@@ -161,20 +167,112 @@ class GalxeScraperEnhanced:
             return []
         soup = BeautifulSoup(html, 'html.parser')
         quests = []
-        for item in soup.select("div.campaign-item"): # Sélecteur corrigé
-            title_element = item.select_one("h5.card-title a")
-            link_element = item.select_one("a")
-            
-            if title_element and link_element:
-                title = title_element.text.strip()
-                link = "https://galxe.com" + link_element["href"]
+        
+        # Debug: Print some HTML to understand the structure
+        print(f"🔍 Analyzing HTML structure...")
+        
+        # Look for the main grid container
+        grid_container = soup.select_one("div.GridFlowContainer_grid-flow__m_iqK")
+        if grid_container:
+            print(f"✅ Found grid container with {len(grid_container.find_all())} child elements")
+        else:
+            print("❌ Grid container not found")
+        
+        # Try multiple possible selectors for quest cards
+        selectors_to_try = [
+            # Grid items
+            "div.GridFlowContainer_grid-flow__m_iqK > div",
+            "div.GridFlowContainer_grid-flow__m_iqK > *",
+            # Card-like elements
+            "div[class*='card']",
+            "div[class*='Card']", 
+            "div[class*='item']",
+            "div[class*='Item']",
+            # Links to spaces/campaigns
+            "a[href*='/space/']",
+            "a[href*='/quest/']",
+            "a[href*='/campaign/']",
+            # Look for any links in the main content area
+            "main a[href]"
+        ]
+        
+        found_items = []
+        for selector in selectors_to_try:
+            items = soup.select(selector)
+            if items:
+                print(f"✅ Found {len(items)} items with selector: {selector}")
+                found_items.extend(items)
+                break  # Use the first working selector
+        
+        if not found_items:
+            print("❌ No quest items found with any selector")
+            # Debug: show some sample HTML
+            print("Sample HTML structure:")
+            main_content = soup.select_one("main")
+            if main_content:
+                print(main_content.prettify()[:1000] + "...")
+            return []
+        
+        # Extract quest information from found items
+        for item in found_items:
+            try:
+                # Try to find a link
+                link_element = item if item.name == 'a' else item.select_one('a')
+                if not link_element:
+                    continue
+                    
+                href = link_element.get('href', '')
+                if not href:
+                    continue
+                    
+                # Only keep links that look like space/quest/campaign links  
+                if not any(path in href for path in ['/space/', '/quest/', '/campaign/']):
+                    continue
+                    
+                # Extract title
+                title = ""
+                # Try different ways to get the title
+                title_candidates = [
+                    link_element.get_text().strip(),
+                    item.get_text().strip() if item != link_element else "",
+                ]
+                
+                for candidate in title_candidates:
+                    if candidate and len(candidate) > 3:  # Reasonable title length
+                        title = candidate[:100]  # Limit title length
+                        break
+                
+                if not title:
+                    title = f"Quest from {href}"
+                
+                # Build full URL
+                if href.startswith('/'):
+                    full_link = "https://galxe.com" + href
+                elif href.startswith('http'):
+                    full_link = href
+                else:
+                    full_link = "https://galxe.com/" + href
+                
                 quests.append({
                     "title": title,
-                    "link": link,
+                    "link": full_link,
                     "source": "Galxe"
                 })
-        print(f"📊 {len(quests)} quêtes parsées.")
-        return quests
+                
+            except Exception as e:
+                print(f"⚠️  Error parsing item: {e}")
+                continue
+        
+        # Remove duplicates based on link
+        seen_links = set()
+        unique_quests = []
+        for quest in quests:
+            if quest['link'] not in seen_links:
+                seen_links.add(quest['link'])
+                unique_quests.append(quest)
+        
+        print(f"📊 {len(unique_quests)} unique quêtes parsées.")
+        return unique_quests
 
     def scrape_galxe_campaigns(self, pages=5, delay=3):
         """Scrape plusieurs pages de campagnes Galxe"""

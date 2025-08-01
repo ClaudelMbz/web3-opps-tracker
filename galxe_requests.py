@@ -18,7 +18,7 @@ class ScraperAPIBalancer:
         for i in range(1, 9):
             path = f"scraperapi/account{i}"
             secret = self.vault.retrieve_secret(path)
-            accounts.append(secret["key"])
+            accounts.append(secret["api_key"])
         return accounts
 
     def get_accounts_batch(self, batch_size=3, url=None):

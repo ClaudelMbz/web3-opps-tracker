@@ -64,7 +64,7 @@ class TaskManager:
     
     def __init__(self, project_root: str = "."):
         self.project_root = Path(project_root)
-        self.status_file = self.project_root / "status.md"
+        self.status_file = self.project_root / "task-planning" / "STATUS.md"
         self.journal_file = self.project_root / "task_journal.md"
         self.roadmap_file = self.project_root / "roadmap.md"
         self.execution_log = self.project_root / "execution_log.json"

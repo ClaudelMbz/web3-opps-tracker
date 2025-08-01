@@ -25,9 +25,12 @@ class ZealyScraper:
         os.makedirs(self.output_dir, exist_ok=True)
 
     def _get_auth_headers(self):
-        secrets = self.vault.retrieve_secret("zealy/api")
+        # Utiliser directement les variables d'environnement au lieu du Vault
+        api_key = os.getenv("ZEALY_API_KEY")
+        if not api_key:
+            raise ValueError("ZEALY_API_KEY not found in environment variables")
         return {
-            "x-api-key": secrets.get("api_key") or secrets.get("key"),
+            "x-api-key": api_key,
             "Content-Type": "application/json"
         }
 

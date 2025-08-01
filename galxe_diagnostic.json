@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-07-24T18:54:58.091299",
+  "status": "success",
+  "grid_container_found": true,
+  "selector_results": {
+    "div.GridFlowContainer_grid-flow__m_iqK > div": 0,
+    "div.GridFlowContainer_grid-flow__m_iqK > *": 0,
+    "a[href*='/space/']": 0,
+    "a[href*='/quest/']": 2,
+    "main a[href]": 0
+  },
+  "recommendation": "Use ScraperAPI with wait_for parameter or Playwright for dynamic content"
+}
