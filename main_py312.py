@@ -24,6 +24,14 @@ except ImportError as e:
     print(f"⚠️  Zealy scraper non disponible: {e}")
     ZEALY_AVAILABLE = False
 
+# Tentative d'import du scraper RSS/Twitter (si disponible)
+try:
+    from twitter_rss_scraper import TwitterRSSScraper
+    RSS_AVAILABLE = True
+except ImportError as e:
+    print(f"⚠️  RSS scraper non disponible: {e}")
+    RSS_AVAILABLE = False
+
 def run_pipeline():
     """
     Exécute le pipeline complet de scraping pour toutes les sources,
@@ -67,7 +75,34 @@ def run_pipeline():
         print("\n--- Source: Zealy ---")
         print("❌ Scraper Zealy non disponible (dépendances manquantes)")
 
-    # --- 3. Traitement et Sauvegarde ---
+    # --- 3. Scraper RSS/Twitter ---
+    if RSS_AVAILABLE:
+        try:
+            print("\n--- Source: RSS/Twitter ---")
+            rss_scraper = TwitterRSSScraper()
+            
+            # Récupération des flux principaux
+            rss_entries = rss_scraper.fetch_opportunities(max_entries=30)
+            
+            # Récupération des fallbacks
+            fallback_entries = rss_scraper.fetch_fallback_opportunities(max_entries=20)
+            
+            # Combinaison des deux sources
+            all_rss_entries = rss_entries + fallback_entries
+            
+            if all_rss_entries:
+                rss_opportunities = rss_scraper.parse_rss_data(all_rss_entries)
+                all_opportunities.extend(rss_opportunities)
+                print(f"✅ RSS: {len(rss_opportunities)} opportunités récupérées.")
+            else:
+                print("⚠️ RSS: Aucune opportunité récupérée.")
+        except Exception as e:
+            print(f"❌ Erreur lors du scraping RSS: {e}")
+    else:
+        print("\n--- Source: RSS/Twitter ---")
+        print("❌ Scraper RSS non disponible (dépendances manquantes)")
+
+    # --- 4. Traitement et Sauvegarde ---
     if not all_opportunities:
         print("\n⚠️ Aucune opportunité n'a été récupérée au total. Fin du pipeline.")
         return
@@ -94,10 +129,12 @@ def run_pipeline():
     # Statistiques détaillées
     galxe_count = len([opp for opp in processed_opportunities if opp.get('source') == 'Galxe'])
     zealy_count = len([opp for opp in processed_opportunities if opp.get('source') == 'Zealy'])
+    rss_count = len([opp for opp in processed_opportunities if opp.get('source') in ['TwitterRSS', 'AirdropsFallback']])
     
     print(f"\n🎉 Pipeline terminé avec succès!")
     print(f"📊 Galxe: {galxe_count} opportunités")
     print(f"📊 Zealy: {zealy_count} opportunités")
+    print(f"📊 RSS/Twitter: {rss_count} opportunités")
     print(f"💾 {len(processed_opportunities)} opportunités totales sauvegardées dans {filename}")
     
     # Afficher quelques exemples

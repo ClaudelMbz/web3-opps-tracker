@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'scra
 
 from scrapers.galxe_scraper import GalxeScraperEnhanced
 from scrapers.zealy_scraper import ZealyScraper
+from scrapers.twitter_rss_scraper import TwitterRSSScraper
 
 def run_pipeline():
     """
