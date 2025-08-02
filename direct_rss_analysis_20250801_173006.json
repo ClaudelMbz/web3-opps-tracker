@@ -1,0 +1,687 @@
+{
+  "total_opportunities": 68,
+  "direct_opportunities": 17,
+  "indirect_opportunities": 51,
+  "direct_ratio": 25.0,
+  "analysis_details": [
+    {
+      "id": "rss_6e8794a3",
+      "title": "Mad Lads NFTs soar with US$673K in daily sales...",
+      "source": "TwitterRSS",
+      "reward": "$673",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_6c4bee97",
+      "title": "CryptoPunks climbs back to NFT sales lead with over US$704,0...",
+      "source": "TwitterRSS",
+      "reward": "$704",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_331499f9",
+      "title": "DMarket reclaims NFT sales lead with over US$636,958...",
+      "source": "TwitterRSS",
+      "reward": "$636",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_eab57ca1",
+      "title": "CryptoPunks reclaims NFT sales lead with over US$1.6 million...",
+      "source": "TwitterRSS",
+      "reward": "$1",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_ebc9c770",
+      "title": "Polygon’s MKgirl leads daily NFT sales...",
+      "source": "TwitterRSS",
+      "reward": "$1",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_c5e07551",
+      "title": "DMarket snatches NFT sales lead from CryptoPunks...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_b13971cf",
+      "title": "CryptoPunks leads NFT sales with US$1.29 million...",
+      "source": "TwitterRSS",
+      "reward": "$1",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_50d3fe57",
+      "title": "Over US$3.58 mln CryptoPunks change hands, as it leads NFT s...",
+      "source": "TwitterRSS",
+      "reward": "$3",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_8675e9b8",
+      "title": "CryptoPunks leads NFT surge with US$825K in daily sales...",
+      "source": "TwitterRSS",
+      "reward": "$825",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_b1b997e0",
+      "title": "DMarket reclaims top NFT position...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_7ffa0ee1",
+      "title": "Crypto exchange Gate launches spot trading services in the U...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_695034cd",
+      "title": "Ric Edelman&#039;s crypto shift: from 1% to 40% allocation...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_0f09fe03",
+      "title": "Crypto stocks tumble alongside BTC, equities as tariff fears...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_f9595f48",
+      "title": "How a police officer stole 50 BTC from a seized crypto walle...",
+      "source": "TwitterRSS",
+      "reward": "50 BTC",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_1b8c62b6",
+      "title": "DeFi shouldn’t fear ‘suitcoiners’...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": [
+        "deadline"
+      ]
+    },
+    {
+      "id": "rss_4f14c7cf",
+      "title": "UK regulator lifts ban on crypto ETNs for retail investors...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_78f7a83e",
+      "title": "Here’s what happened in crypto today...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": true,
+      "confidence": 60,
+      "indicators_found": [
+        "now",
+        "today",
+        "deadline"
+      ]
+    },
+    {
+      "id": "rss_8f9d4b74",
+      "title": "SBF Loves Coldplay? Crypto and AI Leaders' Spotify Playlists...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_7349a494",
+      "title": "FDIC Still Trying to ‘Stonewall’ Crypto Debanking Documents,...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_4087836b",
+      "title": "Amazon Backs 'Netflix of AI' Startup Fable With User-Generat...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_51421daa",
+      "title": "Crypto Markets See Red as Solana, XRP, Dogecoin Extend Losse...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_a693f780",
+      "title": "Michael Saylor Touts Bitcoin-Tied Preferred Stock as 'High-Y...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_f9674a2e",
+      "title": "XRP Edges Out Ethereum in Coinbase Transaction Revenue as To...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_185cb534",
+      "title": "Bitcoin Correction Could Linger for Months: CryptoQuant...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "deadline"
+      ]
+    },
+    {
+      "id": "rss_164577dd",
+      "title": "Over 40% of Jupiter’s Trading Volume Now Flows Through Priva...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "now"
+      ]
+    },
+    {
+      "id": "rss_b01e71f8",
+      "title": "Grayscale Launches Story Trust, Adding Tokenized IP to Its L...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_20934a55",
+      "title": "Galaxy Digital Warns Crypto Treasury Firms Create ‘Structura...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_2a80de5d",
+      "title": "Coinbase Unveils ‘Everything Exchange’ Bringing Tokenized St...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_7ba650ba",
+      "title": "White House Crypto Report Recommends Expanding CFTC’s Role i...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "deadline"
+      ]
+    },
+    {
+      "id": "rss_f076285f",
+      "title": "SEC Launches ‘Project Crypto’ to Bring All Markets On-Chain...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "today"
+      ]
+    },
+    {
+      "id": "rss_eb745674",
+      "title": "Crypto Markets Stall as Trump’s Crypto Policy Report Fails t...",
+      "source": "TwitterRSS",
+      "reward": "$118",
+      "is_direct": true,
+      "confidence": 60,
+      "indicators_found": [
+        "today",
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_9367f51b",
+      "title": "CryptoPunks Floor Price Hits 3-Year High of $208,000...",
+      "source": "TwitterRSS",
+      "reward": "$208",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_73818689",
+      "title": "What the US Jobs Report Means for the Crypto Market...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_f7f434e0",
+      "title": "Crypto ETFs Smash Records With $12.8 Billion July Inflows | ...",
+      "source": "TwitterRSS",
+      "reward": "$12",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_646dbb8a",
+      "title": "MEXC Expands Stock Futures Portfolio with Tron Inc. (NASDAQ:...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_11d33635",
+      "title": "The Rise of DATCOs: How Public Companies Are Reshaping Crypt...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_a42bebf3",
+      "title": "The9 Partners with Yield Guild Games to Accelerate Web3 Gami...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "today"
+      ]
+    },
+    {
+      "id": "rss_2c5f0406",
+      "title": "Binance Lists FUN/USDC as FUNToken Strengthens Global Tradin...",
+      "source": "TwitterRSS",
+      "reward": "$20-50 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_4a080335",
+      "title": "Pepe Dollar ($PEPD) Presale Picks Up Pace as Ethereum (ETH) ...",
+      "source": "TwitterRSS",
+      "reward": "$3",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_4ecc3f3a",
+      "title": "Fed Holds Rates, Trump Strikes With New Tariffs as Bitcoin a...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_9990ad3e",
+      "title": "Crypto Price Analysis August-01: ETH, XRP, ADA, SOL, and HYP...",
+      "source": "TwitterRSS",
+      "reward": "$4",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_443a589b",
+      "title": "August 2025 Crypto Outlook: Bitcoin’s Next Target $140K?...",
+      "source": "TwitterRSS",
+      "reward": "$140",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_f5dceab3",
+      "title": "FCA Lifts 4-Year Retail Ban on Crypto ETNs – Access Returns ...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "active_status"
+      ]
+    },
+    {
+      "id": "rss_229fc4c4",
+      "title": "PUMP Price Prediction: Pump.fun Token Buybacks Spark Reversa...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "now"
+      ]
+    },
+    {
+      "id": "rss_bff0548b",
+      "title": "BNB Holders Can Now Earn Daily Passive Income Through the Of...",
+      "source": "TwitterRSS",
+      "reward": "$5-20 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "now"
+      ]
+    },
+    {
+      "id": "rss_f75e1838",
+      "title": "VC Firm Andreessen Horowitz Flags Gaps in Draft Crypto Bill...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "active_status"
+      ]
+    },
+    {
+      "id": "rss_db2730d8",
+      "title": "PancakeSwap confirme sa suprématie sur les DEX...",
+      "source": "TwitterRSS",
+      "reward": "$50-100 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_f2bcb62a",
+      "title": "Moins de 1€ et un potentiel de x100 ? Voici 3 pépites crypto...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_98d88109",
+      "title": "Solana bientôt en ETF : 7 géants de la finance passent à l’o...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_1c709bf2",
+      "title": "La SEC dévoile le “Project Crypto” et Bitcoin s’effondre dan...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_981847cc",
+      "title": "Le début d'une altseason ? Découvrez les 5 cryptos qui ont a...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_a83e2746",
+      "title": "Face à un bilan morose, Coinbase annonce le trading d'action...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_b565618e",
+      "title": "Quelles sont les dates à ne pas louper dans la crypto en aoû...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_269234d2",
+      "title": "La SEC lance le « Projet Crypto » pour mettre les marchés am...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_998af6ec",
+      "title": "Le marché crypto chute de 7 % — Que s’est-il passé ?...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_976a7394",
+      "title": "Qu'est-ce qu'un contrat à terme (future) en crypto ?...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_46024da6",
+      "title": "Les trésoreries crypto d'entreprises accumulent désormais 10...",
+      "source": "TwitterRSS",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_6e524cac",
+      "title": "Binance’s 8-Year Anniversary: How the World’s Largest Exchan...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "deadline"
+      ]
+    },
+    {
+      "id": "rss_ef66f839",
+      "title": "Cristiano Ronaldo x Binance “Forever To The Moon” Digital Co...",
+      "source": "AirdropsFallback",
+      "reward": "$50-100 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_51c4473c",
+      "title": "Binance Traders League 2025: Your Ultimate Guide to the $1.8...",
+      "source": "AirdropsFallback",
+      "reward": "$1",
+      "is_direct": false,
+      "confidence": 20,
+      "indicators_found": [
+        "now",
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_d96d5cc6",
+      "title": "Why Binance Commands $31B in Stablecoin Reserves: The Ultima...",
+      "source": "AirdropsFallback",
+      "reward": "$31",
+      "is_direct": true,
+      "confidence": 40,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_98955f98",
+      "title": "Airdrops.io Partners with Bybit: Exclusive Bonuses and Enhan...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_41e57493",
+      "title": "BNB Chain Dominates DeFi: Record $13.31B DEX Volume Signals ...",
+      "source": "AirdropsFallback",
+      "reward": "$13",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": [
+        "precise_amount"
+      ]
+    },
+    {
+      "id": "rss_bb41babb",
+      "title": "Binance Dominates CoinDesk’s 2025 Exchange Benchmark: What T...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_d18b47b6",
+      "title": "Bonus Bitcoin Review: Why I Use It...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_6147eced",
+      "title": "DeFi and Yield Farming Explained. Start Earning Crypto Rewar...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_ac220d08",
+      "title": "Miracle Chain Launches to Turn Adoption and Usage into Finan...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    },
+    {
+      "id": "rss_6d96921d",
+      "title": "DeFi Platform SparkDEX to Launch $SPRK this July...",
+      "source": "AirdropsFallback",
+      "reward": "$10-30 estimated",
+      "is_direct": false,
+      "confidence": 0,
+      "indicators_found": []
+    }
+  ],
+  "high_confidence_direct": 0,
+  "medium_confidence_direct": 2,
+  "low_confidence_direct": 15
+}
