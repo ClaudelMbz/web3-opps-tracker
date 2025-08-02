@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'scra
 from scrapers.galxe_scraper import GalxeScraperEnhanced
 from scrapers.zealy_scraper import ZealyScraper
 from scrapers.twitter_rss_scraper import TwitterRSSScraper
+from scrapers.layer3_scraper import Layer3Scraper
 
 def run_pipeline():
     """
@@ -53,7 +54,20 @@ def run_pipeline():
     except Exception as e:
         print(f"❌ Erreur lors du scraping de Zealy: {e}")
 
-    # --- 3. Traitement et Sauvegarde ---
+    # --- 3. Scraper Layer3 ---
+    try:
+        print("\n--- Source: Layer3 ---")
+        layer3_scraper = Layer3Scraper()
+        layer3_quests = layer3_scraper.fetch_all_campaigns(max_pages=1)
+        if layer3_quests:
+            all_opportunities.extend(layer3_quests)
+            print(f"✅ Layer3: {len(layer3_quests)} opportunités récupérées.")
+        else:
+            print("⚠️ Layer3: Aucune opportunité récupérée.")
+    except Exception as e:
+        print(f"❌ Erreur lors du scraping de Layer3: {e}")
+
+    # --- 4. Traitement et Sauvegarde ---
     if not all_opportunities:
         print("\n⚠️ Aucune opportunité n'a été récupérée au total. Fin du pipeline.")
         return
