@@ -24,6 +24,14 @@ except ImportError as e:
     print(f"⚠️  Zealy scraper non disponible: {e}")
     ZEALY_AVAILABLE = False
 
+# Tentative d'import du scraper Layer3 (si disponible)
+try:
+    from layer3_scraper import Layer3Scraper
+    LAYER3_AVAILABLE = True
+except ImportError as e:
+    print(f"⚠️  Layer3 scraper non disponible: {e}")
+    LAYER3_AVAILABLE = False
+
 # Tentative d'import du scraper RSS/Twitter (si disponible)
 try:
     from twitter_rss_scraper import TwitterRSSScraper
@@ -75,7 +83,24 @@ def run_pipeline():
         print("\n--- Source: Zealy ---")
         print("❌ Scraper Zealy non disponible (dépendances manquantes)")
 
-    # --- 3. Scraper RSS/Twitter ---
+    # --- 3. Scraper Layer3 ---
+    if LAYER3_AVAILABLE:
+        try:
+            print("\n--- Source: Layer3 ---")
+            layer3_scraper = Layer3Scraper()
+            layer3_quests = layer3_scraper.fetch_all_campaigns(max_pages=1)
+            if layer3_quests:
+                all_opportunities.extend(layer3_quests)
+                print(f"✅ Layer3: {len(layer3_quests)} opportunités récupérées.")
+            else:
+                print("⚠️ Layer3: Aucune opportunité récupérée.")
+        except Exception as e:
+            print(f"❌ Erreur lors du scraping de Layer3: {e}")
+    else:
+        print("\n--- Source: Layer3 ---")
+        print("❌ Scraper Layer3 non disponible (dépendances manquantes)")
+
+    # --- 4. Scraper RSS/Twitter ---
     if RSS_AVAILABLE:
         try:
             print("\n--- Source: RSS/Twitter ---")
