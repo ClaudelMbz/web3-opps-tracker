@@ -1,10 +1,10 @@
 # 🗓️ Jour 8 : Automatisation n8n
 
 ## 🎯 Objectif du Jour
-- Installer et configurer n8n pour l'orchestration des workflows
-- Créer les workflows automatisés
-- Intégrer avec Airtable et Google Sheets
-- Tester l'automatisation end-to-end
+- Développer les workflows n8n avancés
+- Créer l'automatisation Google Sheets ↔ Notion
+- Implémenter les notifications Telegram intelligentes
+- Tester l'orchestration complète avec filtrage ROI
 
 ---
 
@@ -32,13 +32,13 @@
 ---
 
 ## ⏰ Créneau 2 : 0:30 - 1:00
-**Tâche :** Workflow ETL de Base  
+**Tâche :** Workflow ETL Notion  
 **Action :**
-- Créer workflow "Web3-ETL-Pipeline"
-- Node HTTP Request → Python scraper
-- Node Function → Transformation des données
-- Node Airtable → Stockage
-**Livrable :** Workflow ETL basique fonctionnel
+- Créer workflow "Web3-ETL-Notion-Pipeline"
+- Webhook Trigger → Réception des données du pipeline
+- Node Function → Transformation et calcul priorité ROI
+- Node HTTP Request → Synchronisation vers Notion Database
+**Livrable :** Workflow ETL Notion fonctionnel
 
 ---
 
@@ -82,31 +82,31 @@ const message = `🚀 Nouvelles opportunités Web3!
 ---
 
 ## ⏰ Créneau 5 : 2:00 - 2:30
-**Tâche :** Orchestration Complète  
+**Tâche :** Orchestration Notion + Telegram  
 **Action :**
-- Workflow "Scraper-Schedule" (toutes les 2h)
-- Workflow "ROI-Filter" (filtre > $2/min)  
-- Workflow "Notification" (si > 10 nouvelles opportunités)
-- Test end-to-end complet
-**Livrable :** Automatisation complète fonctionnelle
+- Workflow "Smart-Notification" (alertes par niveau ROI)
+- Workflow "Notion-Sync" (synchronisation bidirectionnelle)
+- Workflow "ROI-Filter" (🔥 High, ⚡ Medium, 📝 Low)
+- Test pipeline complet Google Sheets → Notion → Telegram
+**Livrable :** Automatisation intelligente opérationnelle
 
 ---
 
 ## 📜 Vérification Finale
-- [ ] n8n interface accessible
-- [ ] Workflow ETL exécute sans erreur
-- [ ] Données synchronisées Sheets ↔ Airtable
-- [ ] Notifications Telegram reçues
-- [ ] Scheduling automatique (cron)
-- [ ] Logs d'exécution disponibles
+- [ ] Workflows n8n avancés opérationnels
+- [ ] Synchronisation Sheets ↔ Notion fonctionnelle
+- [ ] Notifications Telegram par priorité ROI
+- [ ] Filtrage automatique High/Medium/Low ROI
+- [ ] Properties Notion (Priority, Status) mises à jour
+- [ ] Pipeline end-to-end sans erreur
 
 ---
 
 ## 📊 Workflows Créés
-1. **Web3-ETL-Pipeline** : Scraping → Processing → Storage
-2. **ROI-Filter-Workflow** : Filtrage avancé par ROI
-3. **Notification-Workflow** : Alertes Telegram
-4. **Backup-Workflow** : Sauvegarde quotidienne
+1. **Web3-Notion-Sync** : Google Sheets → Notion avec priorités
+2. **Smart-ROI-Filter** : Filtrage 🔥 High (>$10) ⚡ Medium (>$5) 📝 Low
+3. **Intelligent-Notifications** : Alertes Telegram contextuelles
+4. **Notion-Status-Manager** : Gestion automatique des statuts
 
 ---
 

@@ -10,7 +10,7 @@
 ## 🏗️ Architecture Finale Visée
 - **Pipeline automatisé** : Scraping → Filtrage → Stockage → Notifications
 - **Sources** : Galxe, Zealy, Layer3, Twitter/RSS, airdrops.io
-- **Stack** : Python + Docker + Vault + n8n + Airtable + Telegram
+- **Stack** : Python + Docker + Vault + n8n + Notion + Telegram
 - **Monitoring** : Prometheus + Grafana + alertes automatiques
 
 ---
@@ -24,16 +24,16 @@
 | **01** | Infrastructure Docker | Setup VPS, Docker, Git, Python venv, Vault | 2h30 | ✅ VALIDÉ |
 | **02** | Monitoring | Prometheus, Grafana, benchmarks | 2h30 | ✅ VALIDÉ |
 | **03** | Scraper Galxe | API GraphQL, parsing, tests | 2h30 | ✅ VALIDÉ |
-| **04** | Scraper Zealy | API REST, normalisation | 2h30 | 🔄 NEXT |
-| **05** | Scrapers Secondaires | Twitter/RSS, fallbacks | 2h30 | ⏳ À FAIRE |
-| **06** | Processing & ROI | Calcul ROI, déduplication | 2h30 | ⏳ À FAIRE |
-| **07** | Stockage | Google Sheets, Airtable | 2h30 | ⏳ À FAIRE |
+| **04** | Scraper Zealy | API REST, normalisation | 2h30 | ✅ VALIDÉ |
+| **05** | Scrapers Secondaires | Twitter/RSS, fallbacks | 2h30 | ✅ VALIDÉ |
+| **06** | Processing & ROI | Calcul ROI, déduplication | 2h30 | ✅ VALIDÉ |
+| **07** | Stockage | Google Sheets, Notion | 2h30 | ✅ VALIDÉ |
 
 ### 🤖 **SEMAINE 2 : Automatisation & Tests**
 
 | Jour | Focus | Tâches Principales | Durée | Status |
 |------|-------|-------------------|-------|--------|
-| **08** | n8n Workflows | ETL automatique, webhooks | 2h30 | ⏳ À FAIRE |
+| **08** | n8n Workflows | ETL automatique, webhooks | 2h30 | 🔄 NEXT |
 | **09** | Dashboard | Streamlit, métriques | 2h30 | ⏳ À FAIRE |
 | **10** | Notifications | Telegram Bot, alertes | 2h30 | ⏳ À FAIRE |
 | **11** | Healthchecks | Monitoring, failover | 2h30 | ⏳ À FAIRE |
@@ -60,8 +60,9 @@
 ## 🎯 Points de Contrôle Critiques
 
 ### **Jour 7 : Premier flux complet**
-✅ Galxe → Zealy → RSS → Google Sheets → Airtable  
+✅ Galxe → Zealy → RSS → Google Sheets → Notion  
 ✅ Calcul ROI > $2/min fonctionnel  
+✅ Intégration n8n webhook opérationnelle
 
 ### **Jour 14 : MVP opérationnel**
 ✅ Pipeline complet : extraction → filtrage → notification  
@@ -94,7 +95,7 @@
 
 ### **Données**
 - **Google Sheets** : Stockage principal collaboratif
-- **Airtable** : Base de données avec vues filtradas  
+- **Notion** : Base de données avec properties et filtres avancés  
 - **Redis** : Cache haute performance
 
 ### **Automatisation**
@@ -120,7 +121,7 @@ graph LR
     E --> F[Déduplication]
     F --> G[Filtrage >$2/min]
     G --> H[Google Sheets]
-    H --> I[Airtable]
+    H --> I[Notion Database]
     I --> J[Telegram Alerts]
     I --> K[Dashboard Streamlit]
 ```
