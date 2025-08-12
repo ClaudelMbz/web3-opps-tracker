@@ -4,7 +4,7 @@
 **Projet** : Web3 Opportunities Tracker  
 **Durée totale** : 23 jours (2h30/jour)  
 **Date de début** : 22 juillet 2025  
-**Prochaine étape** : Jour 8 - Automatisation n8n
+**Prochaine étape** : Jour 10 - Notifications Telegram
 
 ---
 
@@ -20,21 +20,22 @@
 | **05** | 2025-07-XX | Scrapers RSS/Twitter | ✅ **VALIDÉ** | Tests OK | Sources fallback configurées |
 | **06** | 2025-07-XX | Processing  ROI | ✅ **VALIDÉ** | Tests OK | Déduplication et calcul ROI automatique |
 | **07** | 2025-08-04 | Stockage Google Sheets + Notion | ✅ **VALIDÉ** | Tests OK | Intégration complète avec Notion et n8n |
+| **08** | 2025-08-09 | Automatisation n8n | ✅ **VALIDÉ** | Tests OK | Workflows ETL et webhooks opérationnels |
+| **09** | 2025-08-12 | Dashboard Streamlit | ✅ **VALIDÉ** | Tests 5/5 | 1515 opportunités, interface complète |
 
 ### 🔄 **JOUR EN COURS**
 | Jour | Date | Focus | Status | Avancement | Prochaines actions |
 |------|------|-------|---------|------------|-------------------|
-| **08** | 2025-08-09 | Automatisation n8n | 🔄 **EN COURS** | 0% | Développer les workflows n8n avancés |
+| **10** | 2025-08-XX | Notifications Telegram | 🔄 **À DÉMARRER** | 0% | Développer le bot Telegram et alertes |
 
 ### ⏳ **JOURS PLANIFIÉS**
 | Jour | Focus | Tâches Principales | Dépendances |
 |------|-------|-------------------|-------------|
-| **05** | Scrapers RSS/Twitter | Setup RSS, fallbacks, langue | Jour 04 terminé |
-| **06** | Processing & ROI | Calcul ROI, déduplication | Jour 05 terminé |
-| **07** | Stockage | Google Sheets, Notion | Jour 06 terminé |
-| **08** | Automatisation n8n | Workflows ETL, webhooks | Jour 07 terminé |
-| **09** | Dashboard | Streamlit, métriques | 🔄 **EN COURS** |
 | **10** | Notifications | Telegram Bot, alertes | Jour 09 terminé |
+| **11** | Tests & Documentation | Tests complets, docs | Jour 10 terminé |
+| **12** | Optimisation | Performance, cache | Jour 11 terminé |
+| **13** | Sécurité | Audit, monitoring | Jour 12 terminé |
+| **14** | MVP Deploy | Déploiement final | Jour 13 terminé |
 
 ---
 
@@ -69,23 +70,27 @@
 ## 📊 MÉTRIQUES ACTUELLES
 
 ### **Développement**
-- **Jours complétés** : 7/23 (30%)
-- **Tâches terminées** : 35/115 (30%)
-- **Temps investi** : 17h30/57h30 (30%)
+- **Jours complétés** : 9/23 (39%)
+- **Tâches terminées** : 55/115 (48%)
+- **Temps investi** : 22h30/57h30 (39%)
 
 ### **Sources de données**
 - **Galxe** : ✅ Opérationnel (GraphQL API)
 - **Zealy** : ✅ Opérationnel (API REST + ROI)
 - **Twitter/RSS** : ✅ Opérationnel (Fallbacks)
 - **Layer3** : ✅ Opérationnel (API REST)
+- **AirdropsFallback** : ✅ Opérationnel (Source complémentaire)
 - **Google Sheets** : ✅ Opérationnel
 - **Notion** : ✅ Opérationnel
+- **Dashboard** : ✅ Opérationnel (1515 opportunités affichées)
 
 ### **Infrastructure**
 - **Docker** : ✅ Opérationnel
 - **Vault** : ✅ Opérationnel
 - **Monitoring** : ✅ Prometheus + Grafana
-- **Tests** : ✅ Framework en place
+- **n8n Workflows** : ✅ ETL automatisé
+- **Dashboard Streamlit** : ✅ Interface temps réel
+- **Tests** : ✅ Framework complet (5/5 tests passés)
 
 ---
 
@@ -105,15 +110,16 @@
 
 ## 🔄 PROCHAINES ACTIONS
 
-### **Immédiat (Jour 8)**
-1. Démarrer l'automatisation n8n pour les workflows
-2. Configurer les webhooks Notion et Google Sheets
-3. Suivre le plan détaillé du Jour-08.md
+### **Immédiat (Jour 10)**
+1. Développer le bot Telegram pour notifications
+2. Configurer les alertes ROI et nouvelles opportunités
+3. Intégrer les webhooks avec le dashboard
 
 ### **Cette semaine**
-- Automatisation complète avec n8n (J08)
-- Développer le dashboard Streamlit (J09)
+- ✅ Automatisation complète avec n8n (J08)
+- ✅ Dashboard Streamlit opérationnel (J09)
 - Implémenter les notifications Telegram (J10)
+- Tests et optimisations (J11)
 
 ### **Semaine prochaine**
 - Tests et documentation (J11-J13)
@@ -150,13 +156,13 @@
 - [x] Premier pipeline complet (J07)
 
 ### **Semaine en cours (J08-J14)**
-- [ ] Automatisation n8n complète (J08)
-- [ ] Dashboard Streamlit temps réel (J09)
+- [x] Automatisation n8n complète (J08)
+- [x] Dashboard Streamlit temps réel (J09)
 - [ ] Notifications Telegram (J10)
 - [ ] Tests et documentation (J11-J13)
 - [ ] MVP déployé et testé (J14)
 
 ---
 
-*Dernière mise à jour : 9 août 2025, 15:35*  
-*Prochaine révision : Fin du Jour 8*
+*Dernière mise à jour : 12 août 2025, 12:30*  
+*Prochaine révision : Fin du Jour 10*
