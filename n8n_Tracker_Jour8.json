@@ -1,0 +1,468 @@
+{
+  "name": "Tracker",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -896,
+        -512
+      ],
+      "id": "5ff5eae7-e091-4b44-9d3a-8b0a126dcae5",
+      "name": "Webhook",
+      "webhookId": "5f08fa3f-8275-4f2b-8cc5-1231e41b6952"
+    },
+    {
+      "parameters": {
+        "height": 304,
+        "width": 912
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        -624
+      ],
+      "id": "62b720e5-4063-4f04-95c2-3a48528e46c8",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Si items est déjà un tableau d'opportunités directement\nconst opportunities = items.map(item => item.json);\n\nconst formattedOps = opportunities.map(op => {\n  let roi = op.roi;\n  if (!roi || roi === \"\") {\n    roi = 0;\n  } else {\n    roi = Number(roi);\n  }\n\n  let priority = op.priority;\n\n  if (roi > 50) {\n    priority = \"🔥 High\";\n  } else if (roi > 10) {\n    priority = \"⚡ Medium\";\n  } else {\n    priority = \"📝 Low\";\n  }\n\n  return {\n    title: op.title,\n    source: op.source,\n    reward: op.reward,\n    roi: Number(roi),\n    time: op.time,\n    status: op.status,\n    priority: priority,\n    url: op.url,\n    date: op.date,\n    hash: op.hash\n  };\n});\n\nreturn formattedOps.map(op => ({ json: op }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -448,
+        -512
+      ],
+      "id": "cfa464d9-2d58-4007-8dcf-82e934c630c9",
+      "name": "JSON Processing"
+    },
+    {
+      "parameters": {
+        "jsCode": "// On récupère les opportunités depuis le webhook\nconst opportunities = items[0].json.body.opportunities;\n\n// Exemple : préparer un tableau d’objets avec uniquement les champs utiles\nconst transformed = opportunities.map(op => {\n  return {\n    title: op.title,\n    source: op.source,\n    reward: op.reward,\n    roi: op.roi,\n    time: op.time,\n    status: op.status,\n    priority: op.priority,\n    url: op.url,\n    date: op.date,\n    hash: op.hash\n  };\n});\n\n// On retourne chaque opportunité comme un item individuel pour la suite du workflow\nreturn transformed.map(op => ({ json: op }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -656,
+        -512
+      ],
+      "id": "55b607be-304f-4412-bfa4-de749bf6bd9a",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 624,
+        "width": 912,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        -288
+      ],
+      "id": "c4cb6071-9b3d-46b4-b662-0c950b07be0c",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const months = {\n  \"janvier\": \"01\",\n  \"février\": \"02\",\n  \"mars\": \"03\",\n  \"avril\": \"04\",\n  \"mai\": \"05\",\n  \"juin\": \"06\",\n  \"juillet\": \"07\",\n  \"août\": \"08\",\n  \"septembre\": \"09\",\n  \"octobre\": \"10\",\n  \"novembre\": \"11\",\n  \"décembre\": \"12\"\n};\n\nreturn items.map(item => {\n  const rawDate = item.json.date;\n  if (rawDate.match(/\\d{4}-\\d{2}-\\d{2}/)) {\n    // Déjà en ISO, on ne touche pas\n    return item;\n  }\n\n  const [day, monthName, year] = rawDate.split(\" \");\n  const month = months[monthName.toLowerCase()];\n  item.json.date = `${year}-${month}-${day.padStart(2, \"0\")}`;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -512
+      ],
+      "id": "22ba6da7-a97f-4d33-acf0-0037edb4bb25",
+      "name": "Date ISO Format"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Code pour calculer les statistiques\nconst opportunities = items;\n\n// Compter par priorité\nconst highCount = opportunities.filter(op => op.json.priority === \"🔥 High\").length;\nconst mediumCount = opportunities.filter(op => op.json.priority === \"⚡ Medium\").length;\nconst lowCount = opportunities.filter(op => op.json.priority === \"📝 Low\").length;\n\n// Calculer ROI moyen (CONVERSION EN NUMBER)\nconst totalROI = opportunities.reduce((sum, op) => {\n  const roi = Number(op.json.roi) || 0; // ← CONVERSION ICI\n  return sum + roi;\n}, 0);\nconst avgROI = Number(opportunities.length > 0 ? (totalROI / opportunities.length).toFixed(2) : 0);\n\n// Source la plus représentée\nconst sources = {};\nopportunities.forEach(op => {\n  const source = op.json.source || 'Unknown';\n  sources[source] = (sources[source] || 0) + 1;\n});\nconst topSource = Object.keys(sources).reduce((a, b) => sources[a] > sources[b] ? a : b, 'None');\n\n// Retourner un objet avec toutes les stats\nreturn [{\n  json: {\n    opportunities: opportunities.map(op => ({\n      ...op.json,\n      roi: Number(op.json.roi) || 0 // ← CONVERSION AUSSI ICI pour les données individuelles\n    })),\n    stats: {\n      totalCount: opportunities.length,\n      highCount,\n      mediumCount,\n      lowCount,\n      avgROI,\n      topSource,\n      sources\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -512
+      ],
+      "id": "eebe7a67-821f-46fe-a064-7bd6d1ef8c07",
+      "name": "Statistics"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.notion.com/v1/pages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"parent\": {\n    \"database_id\": \"246a5a6f87c480d5a7f0f33c1643dd27\"\n  },\n  \"properties\": {\n    \"Title\": {\n      \"title\": [\n        {\n          \"text\": {\n            \"content\": \"{{$json.title}}\"\n          }\n        }\n      ]\n    },\n    \"Source\": {\n      \"select\": {\n        \"name\": \"{{$json.source}}\"\n      }\n    },\n    \"Reward\": {\n      \"rich_text\": [\n        {\n          \"text\": {\n            \"content\": \"{{$json.reward}}\"\n          }\n        }\n      ]\n    },\n    \"ROI\": {\n      \"number\": {{$json.roi}}\n    },\n    \"Status\": {\n      \"select\": {\n        \"name\": \"{{$json.status}}\"\n      }\n    },\n    \"Priority\": {\n      \"select\": {\n        \"name\": \"{{$json.priority}}\"\n      }\n    },\n    \"URL\": {\n      \"url\": \"{{$json.url}}\"\n    },\n    \"Date\": {\n      \"date\": {\n        \"start\": \"{{$json.date}}\"\n      }\n    },\n    \"Hash\": {\n      \"rich_text\": [\n        {\n          \"text\": {\n            \"content\": \"{{$json.hash}}\"\n          }\n        }\n      ]\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -672,
+        -224
+      ],
+      "id": "a7704587-24e2-4926-998e-ab75296a33de",
+      "name": "Notion Updates",
+      "credentials": {
+        "notionApi": {
+          "id": "D9t8np2JkMQ0uydb",
+          "name": "Claudel90"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mAZENtCNuVFz0bis22HpUYIFwa-BGo0Lq74IhwUltPo",
+          "mode": "list",
+          "cachedResultName": "Web3Opps",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mAZENtCNuVFz0bis22HpUYIFwa-BGo0Lq74IhwUltPo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mAZENtCNuVFz0bis22HpUYIFwa-BGo0Lq74IhwUltPo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Title": "={{ $json.title }}",
+            "Date": "={{ $json.date }}",
+            "Time": "={{ $json.time }}",
+            "Source": "={{ $json.source }}",
+            "Reward": "={{ $json.reward }}",
+            "ROI": "={{ $json.roi }}",
+            "Link": "={{ $json.url }}",
+            "Hash": "={{ $json.hash }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Source",
+              "displayName": "Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reward",
+              "displayName": "Reward",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Time",
+              "displayName": "Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ROI",
+              "displayName": "ROI",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hash",
+              "displayName": "Hash",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -448,
+        -224
+      ],
+      "id": "5cb774c1-93e1-44e9-85f0-33fb2ae6a8ab",
+      "name": "Gsheets Updates",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "5usRzh5WDMrcka0O",
+          "name": "Claudel90"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7886553560",
+        "text": "=🔥 <b>OPPORTUNITÉ HIGH ROI DÉTECTÉE !</b>\n\n💎 <b>{{ $json.title }}</b>\n\n💰 <b>Reward :</b> {{ $json.reward }}\n⚡ <b>ROI :</b> ${{ $json.roi }}/min\n🎯 <b>Source :</b> {{ $json.source }}\n⏱️ <b>Temps estimé :</b> {{ $json.time }}min\n\n🔗 <a href=\"{{ $json.url }}\">ACCÉDER À L'OFFRE</a>\n\n<i>Opportunité ajoutée automatiquement à Notion et Google Sheets</i>",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -208,
+        -224
+      ],
+      "id": "d0971e1f-0b1f-433f-af8e-f7831625e528",
+      "name": "Notification",
+      "webhookId": "d1f4cc99-e89c-4572-a20f-9d6daf3b56af",
+      "credentials": {
+        "telegramApi": {
+          "id": "oCTCcHGoeBXWWqrq",
+          "name": "Tracker"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7886553560",
+        "text": "=🔥 <b>OPPORTUNITÉ HIGH ROI DÉTECTÉE !</b>\n\n💎 <b>{{ $json.title }}</b>\n\n💰 <b>Reward :</b> {{ $json.reward }}\n⚡ <b>ROI :</b> ${{ $json.roi }}/min\n🎯 <b>Source :</b> {{ $json.source }}\n⏱️ <b>Temps estimé :</b> {{ $json.time }}min\n\n🔗 <a href=\"{{ $json.url }}\">ACCÉDER À L'OFFRE</a>\n\n<i>Opportunité ajoutée automatiquement à Notion et Google Sheets</i>",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -160,
+        -16
+      ],
+      "id": "526cb15a-9c3a-43e0-8578-dddd04281e06",
+      "name": "Notification1",
+      "webhookId": "d1f4cc99-e89c-4572-a20f-9d6daf3b56af",
+      "credentials": {
+        "telegramApi": {
+          "id": "oCTCcHGoeBXWWqrq",
+          "name": "Tracker"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54e7e710-9dec-40c6-b03d-7bbaecb5e7fd",
+              "leftValue": "={{ $json.stats.avgROI }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -448,
+        128
+      ],
+      "id": "16d6e99f-1073-469f-8827-d67f517df745",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        144
+      ],
+      "id": "f8d61cf7-b4f4-4bbc-b4bc-bb586ea4dba0",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "JSON Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Processing": {
+      "main": [
+        [
+          {
+            "node": "Date ISO Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date ISO Format": {
+      "main": [
+        [
+          {
+            "node": "Statistics",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gsheets Updates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notion Updates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Statistics": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion Updates": {
+      "main": [
+        []
+      ]
+    },
+    "Gsheets Updates": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Notification1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "2a64a648-80b4-4ca3-a262-5bf90ced0920",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e484406340098e1115fe8262a0c6d540c1a00c1e5c2e20a689b053e7719f136f"
+  },
+  "id": "m58eD315exNQ0gxv",
+  "tags": []
+}
