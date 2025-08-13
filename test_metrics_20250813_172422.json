@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-08-13T17:24:21.454669",
+  "system_info": {
+    "cpu_count": 12,
+    "memory_total_gb": 15.23,
+    "python_version": "3.12.0",
+    "platform": "nt",
+    "working_directory": "D:\\Web3-Opps-Tracker"
+  },
+  "test_suites": {
+    "TELEGRAM_SYSTEM": {
+      "tests_run": 7,
+      "tests_passed": 7,
+      "tests_failed": 0,
+      "duration_seconds": 0.06,
+      "success_rate": 100.0,
+      "timestamp": "2025-08-13T17:24:21.534304"
+    },
+    "INTEGRATION": {
+      "tests_run": 9,
+      "tests_passed": 9,
+      "tests_failed": 0,
+      "duration_seconds": 1.09,
+      "success_rate": 100.0,
+      "timestamp": "2025-08-13T17:24:22.621666"
+    }
+  },
+  "overall_metrics": {
+    "total_duration_seconds": 1.15,
+    "memory_usage": {
+      "initial_mb": 102.59,
+      "final_mb": 103.67,
+      "delta_mb": 1.08
+    },
+    "cpu_usage_percent": 0.0,
+    "tests_per_second": 13.89
+  }
+}
